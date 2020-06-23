@@ -1,21 +1,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
+<style>
+	.twbs .filled
+	{
+		opacity: 0.5;
+	}
+	.twbs .status
+	{
+		text-align: center;
+	    background: #e87171;
+	    font-size: 14px;
+	    padding: 10px;
+	    margin-bottom: 20px;
+	    font-weight: bold;
+	    color: #fff;
+	}
+</style>
 <script>
 
 	var app = angular.module("ItemCalculator", []);
 	app.controller("MainController", function($scope,$http)
 	{
 
+		$scope.last_message = "";
 		$scope.calculator = {
 			"messages":
 			{
-				"rank_team":"Great Job. Wait to receive a password to see expert rankings.",
-				"rank_individual":"Now rank as a team. Notice what has changed or stayed the same.",
-              "password_revealed":"Now check your score",
-				"default":"Please rank individually."
+				"rank_team":"Great Job. Wait for your instructor to provide you a Password to Reveal the Answers",
+				"rank_individual":"Good. Now Fill up the Second Columns",
+				"password_revealed":"Now check your score",
+				"default":"Fill in the Column 'Rank Individually' First"
 			},
-			"expert_rank_password":"password",
+			"expert_rank_password":"sid",
 			"reveal_expert_rank":false,
 			"items":
 			{
@@ -25,7 +42,7 @@
 					"label":"Sleeping Bag Per Person",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":4
+					"rank_expert":7
 				},
 				"snow_shoes":
 				{
@@ -33,7 +50,7 @@
 					"label":"Snow Shoes",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":7
+					"rank_expert":8
 				},
 				"maple_syrup":
 				{
@@ -41,7 +58,7 @@
 					"label":"Maple Syrup",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":5
+					"rank_expert":9
 				},
 				"water_purification_tablets":
 				{
@@ -49,15 +66,15 @@
 					"label":"Water Purification Tablets",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":15
+					"rank_expert":10
 				},
-				"hand_ax":
+				"hand_axe":
 				{
-					"name":"hand_ax",
-					"label":"Hand Ax",
+					"name":"hand_axe",
+					"label":"Hand Axe",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":2
+					"rank_expert":11
 				},
 				"nylon_rope":
 				{
@@ -65,7 +82,7 @@
 					"label":"Nylon Rope",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":6
+					"rank_expert":1
 				},
 				"rum":
 				{
@@ -73,7 +90,7 @@
 					"label":"Rum",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":11
+					"rank_expert":2
 				},
 				"inner_tube":
 				{
@@ -81,7 +98,7 @@
 					"label":"Inner Tube",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":8
+					"rank_expert":12
 				},
 				"alarm_clock":
 				{
@@ -89,7 +106,7 @@
 					"label":"Alarm Clock",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":12
+					"rank_expert":13
 				},
 				"heavy_duty_canvas":
 				{
@@ -97,7 +114,7 @@
 					"label":"Heavy Duty Canvas",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":3
+					"rank_expert":14
 				},
 				"matches":
 				{
@@ -105,7 +122,7 @@
 					"label":"Matches",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":1
+					"rank_expert":3
 				},
 				"compass":
 				{
@@ -113,7 +130,7 @@
 					"label":"Compass",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":13
+					"rank_expert":4
 				},
 				"flashlight":
 				{
@@ -121,7 +138,7 @@
 					"label":"Flashlight",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":10
+					"rank_expert":5
 				},
 				"book":
 				{
@@ -129,7 +146,7 @@
 					"label":"Book",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":14
+					"rank_expert":15
 				},
 				"shaving_kit":
 				{
@@ -137,12 +154,11 @@
 					"label":"Shaving Kit",
 					"rank_individual":0,
 					"rank_team":0,
-					"rank_expert":9
+					"rank_expert":6
 				}
 			}
 		};
-      
-      
+
 		$scope.state = "default";
 
 		$scope.checkIfColumnFilled = function(column)
@@ -160,6 +176,7 @@
 				}
 			}
 			
+			
 			if(column=="rank_individual")
 			{
 				if(filled==cnt)
@@ -170,8 +187,8 @@
 				else
 				{
 					$scope.state = "default";
-					//$scope.last_message = "";
-					//$scope.calculator.reveal_expert_rank = false;
+					$scope.last_message = "";
+					$scope.calculator.reveal_expert_rank = false;
 				}
 				//$scope.status = $scope.calculator.messages["rank_individual"];
 			}
@@ -184,11 +201,15 @@
 				}
 				else
 				{
-					//$scope.last_message = "";
-					//$scope.calculator.reveal_expert_rank = false;
+					$scope.last_message = "";
+					$scope.calculator.reveal_expert_rank = false;
 				}
 				//$scope.status = $scope.calculator.messages["rank_team"];
 			}
+
+			///return true;
+			
+			
 			return false;
 		}
 
@@ -248,7 +269,6 @@
 			}
 			return cnt;
 		}
-        $scope.last_message = "";
 
 		$scope.reveal = function()
 		{
@@ -257,7 +277,7 @@
 			{
 				$scope.calculator.reveal_expert_rank = true;
 				$scope.last_message = $scope.calculator.messages["password_revealed"];
-				$scope.state = "step3_completed";
+				$scope.state = "step3_completed";//$scope.calculator.messages["password_revealed"];
 			}
 		};
 
@@ -291,7 +311,7 @@
 			return tot;
 		}
 
-		$scope.status = "Please rank individually.";
+		$scope.status = "Fill in the Column 'Rank Individually' First";
 
 		
 	});
@@ -299,29 +319,13 @@
 
 
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <style>
-	.twbs .filled
-	{
-		opacity: 0.5;
-	}
-	.twbs .status
-	{
-		text-align: center;
-	    background: #fff;
-	    font-size: 40px;
-	    padding: 120px;
-	    margin-bottom: 100px;
-	    font-weight: 500;
-	    color: #000;
-	}
-
-
 	body
 	{
 		padding:50px;
-		font-family: 'Poppins', sans-serif;
-		font-size: 20px;
+		font-family: 'Roboto';
+		font-size: 12px;
 	}
 	.twbs .row
 	{
@@ -330,7 +334,7 @@
 	.twbs label
 	{
 		    position: relative;
-	    top: 4px;
+	    top: 8px;
 	    font-size: 14px;
 	}
 	.twbs select
@@ -347,24 +351,24 @@
 	{
 		cursor: pointer;
 		display: inline-block;
-	    background: #fff;
-	    color: #000;
+	    background: #4fa523;
+	    color: #fff;
 	    font-weight: bold;
 	    text-align: center;
-	    width: 50%;
+	    width: 100%;
 	    padding: 5px;
 	    border-radius: 5px;
 	}
-	.twbs .row.mheader
+	.twbs .row.header
 	{
 		font-weight: bold;
 		margin-bottom: 20px;
 	}
-	.twbs .row.mheader .col-md-2
+	.twbs .row.header .col-md-2
 	{
-		font-size: 20px;
-    	color: #000;
-    	text-transform: none;
+		font-size: 14px;
+    	color: #be0000;
+    	text-transform: uppercase;
     	text-align: center;
 	}
 	.twbs .aleft
@@ -381,8 +385,8 @@
 	{
 		width: 10%;
 	    text-align: center;
-	    background: #fff;
-	    color: #000;
+	    background: #eb0a0a;
+	    color: #fff;
 	    position: absolute;
 	    top: 50%;
 	    transform: translateY(-50%);
@@ -405,14 +409,76 @@
 	}
 	.twbs .totals div.head
 	{
-		font-size: 20px;
-    	color: #000;
+		font-size: 14px;
+    	color: #ad0d0d;
 	}
 	.twbs .totals div.cnt
 	{
-		font-size: 80px;
+		font-size: 30px;
     	font-weight: bold;
     	color: #000;
 	}
 </style>
-<link rel="stylesheet" type="text/css" href="https://trumpet-cylinder-6a62.squarespace.com/s/twbs.css" />
+<link rel="stylesheet" type="text/css" href="twbs.css" />
+<body>
+	<div ng-app="ItemCalculator" ng-controller="MainController" class="twbs">
+
+		<div class="row">
+			<div class="col-md-12 status"><span ng-show="state=='default' && last_message==''">{{calculator.messages["default"]}}</span><span ng-show="state=='step1_completed' && last_message==''">{{calculator.messages["rank_individual"]}}</span><span ng-show="state=='step2_completed' && last_message==''">{{calculator.messages["rank_team"]}}</span><span ng-show="last_message!=''">{{calculator.messages["password_revealed"]}}</span></div>
+		</div>
+		<div class="row header">
+			<div class="col-md-2 aleft">Items to pack</div>
+			<div class="col-md-2">Rank Individually</div>
+			<div class="col-md-2">Rank as a Team</div>
+			<div class="col-md-2">Expert Rankings</div>
+			<div class="col-md-2">Your Difference</div>
+			<div class="col-md-2">Team Difference</div>
+		</div>
+
+		
+
+		<div class="row" ng-repeat="(name,item) in calculator.items">
+			<div class="col-md-2"><label for="dd{{$index}}">{{item.label}}</label></div>
+
+			<div class="col-md-2" ng-class="{filled:checkIfColumnFilled('rank_individual')}">
+				<select id="dd{{$index}}" tabindex="{{$index}}" ng-model="calculator.items[name].rank_individual" ng-options="item as item for item in getRanks('rank_individual',calculator.items[name])" ng-class="{w90:true}"></select><span ng-click="calculator.items[name].rank_individual=-1" ng-show="calculator.items[name].rank_individual>0" class="clear_box">X</span></div>
+
+			<div class="col-md-2"><select tabindex="{{$index+getItemsCount()}}" ng-disabled="!checkIfColumnFilled('rank_individual')" ng-model="calculator.items[name].rank_team" ng-options="item as item for item in getRanks('rank_team',calculator.items[name])" ng-class="{w90:true}"></select><span ng-click="calculator.items[name].rank_team=-1" ng-show="calculator.items[name].rank_team>0" class="clear_box">X</span></div>
+
+			<div class="col-md-2 center bold"><span ng-click="reveal()" ng-show="checkIfColumnFilled('rank_team') && !calculator.reveal_expert_rank && $index==0" class="btn_reveal">Reveal</span><span ng-show="calculator.reveal_expert_rank">{{calculator.items[name].rank_expert}}</span></div>
+
+			<div class="col-md-2 center bold"><span ng-show="calculator.items[name].rank_individual>0 && calculator.reveal_expert_rank" ng-bind="abs(calculator.items[name].rank_individual - calculator.items[name].rank_expert,'my_total')"></span></div>
+
+			<div class="col-md-2 center bold"><span ng-show="calculator.items[name].rank_team>0 && calculator.reveal_expert_rank" ng-bind="abs(calculator.items[name].rank_team - calculator.items[name].rank_expert,'team_total')"></span></div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-2">&nbsp;</div>
+
+			<div class="col-md-2"	>&nbsp;</div>
+
+			<div class="col-md-2">&nbsp;</div>
+
+			<div class="col-md-2 center bold">&nbsp;</div>
+
+			<div class="col-md-2 center bold">
+				<div class="totals" ng-show="calculator.reveal_expert_rank">
+					<div class="head">Individual Score</div>
+					<div class="cnt"><span ng-bind="getTotals('my_total')"></span></div>
+				</div>
+			</div>
+
+			<div class="col-md-2 center bold">
+				<div class="totals" ng-show="calculator.reveal_expert_rank">
+					<div class="head">Team Score</div>
+					<div class="cnt"><span ng-bind="getTotals('team_total')"></span></div>
+				</div>
+			</div>
+		</div>
+
+
+
+		</div>
+
+</body>
