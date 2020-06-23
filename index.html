@@ -1,12 +1,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
 <style>
 	body
 	{
 		padding:50px;
-		font-family: 'Poppins', sans-serif;
-		font-size: 20px;
+		font-family: 'Roboto';
+		font-size: 12px;
 	}
 	.twbs .row
 	{
@@ -15,7 +16,7 @@
 	.twbs label
 	{
 		    position: relative;
-	    top: 4px;
+	    top: 8px;
 	    font-size: 14px;
 	}
 	.twbs select
@@ -32,24 +33,24 @@
 	{
 		cursor: pointer;
 		display: inline-block;
-	    background: #fff;
-	    color: #000;
+	    background: #4fa523;
+	    color: #fff;
 	    font-weight: bold;
 	    text-align: center;
-	    width: 50%;
+	    width: 100%;
 	    padding: 5px;
 	    border-radius: 5px;
 	}
-	.twbs .row.mheader
+	.twbs .row.header
 	{
 		font-weight: bold;
 		margin-bottom: 20px;
 	}
-	.twbs .row.mheader .col-md-2
+	.twbs .row.header .col-md-2
 	{
-		font-size: 20px;
-    	color: #000;
-    	text-transform: none;
+		font-size: 14px;
+    	color: #be0000;
+    	text-transform: uppercase;
     	text-align: center;
 	}
 	.twbs .aleft
@@ -66,8 +67,8 @@
 	{
 		width: 10%;
 	    text-align: center;
-	    background: #fff;
-	    color: #000;
+	    background: #eb0a0a;
+	    color: #fff;
 	    position: absolute;
 	    top: 50%;
 	    transform: translateY(-50%);
@@ -90,16 +91,17 @@
 	}
 	.twbs .totals div.head
 	{
-		font-size: 20px;
-    	color: #000;
+		font-size: 14px;
+    	color: #ad0d0d;
 	}
 	.twbs .totals div.cnt
 	{
-		font-size: 80px;
+		font-size: 30px;
     	font-weight: bold;
     	color: #000;
 	}
 </style>
+
 <script>
 
 	var app = angular.module("ItemCalculator", []);
