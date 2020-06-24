@@ -24,7 +24,8 @@
 	}
 	.twbs label
 	{
-		    position: relative;
+	    color: #000;
+		position: relative;
 	    top: 4px;
 	    font-size: 14px;
 	}
@@ -52,7 +53,6 @@
 	}
 	.twbs .row.mheader
 	{
-		color: #000;
 		font-weight: bold;
 		margin-bottom: 20px;
 	}
