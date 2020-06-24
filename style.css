@@ -1,4 +1,18 @@
-body
+	.twbs .filled
+	{
+		opacity: 0.5;
+	}
+	.twbs .status
+	{
+		text-align: center;
+	    background: #fff;
+	    font-size: 40px;
+	    padding: 120px;
+	    margin-bottom: 100px;
+	    font-weight: 500;
+	    color: #000;
+	}
+	body
 	{
 		padding:50px;
 		font-family: 'Poppins', sans-serif;
