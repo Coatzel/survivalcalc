@@ -1,8 +1,8 @@
-	body
+body
 	{
 		padding:50px;
-		font-family: 'Roboto';
-		font-size: 12px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 20px;
 	}
 	.twbs .row
 	{
@@ -11,7 +11,7 @@
 	.twbs label
 	{
 		    position: relative;
-	    top: 8px;
+	    top: 4px;
 	    font-size: 14px;
 	}
 	.twbs select
@@ -28,24 +28,24 @@
 	{
 		cursor: pointer;
 		display: inline-block;
-	    background: #4fa523;
-	    color: #fff;
+	    background: #fff;
+	    color: #000;
 	    font-weight: bold;
 	    text-align: center;
-	    width: 100%;
+	    width: 50%;
 	    padding: 5px;
 	    border-radius: 5px;
 	}
-	.twbs .row.header
+	.twbs .row.mheader
 	{
 		font-weight: bold;
 		margin-bottom: 20px;
 	}
-	.twbs .row.header .col-md-2
+	.twbs .row.mheader .col-md-2
 	{
-		font-size: 14px;
-    	color: #be0000;
-    	text-transform: uppercase;
+		font-size: 20px;
+    	color: #000;
+    	text-transform: none;
     	text-align: center;
 	}
 	.twbs .aleft
@@ -62,8 +62,8 @@
 	{
 		width: 10%;
 	    text-align: center;
-	    background: #eb0a0a;
-	    color: #fff;
+	    background: #fff;
+	    color: #000;
 	    position: absolute;
 	    top: 50%;
 	    transform: translateY(-50%);
@@ -74,7 +74,6 @@
 	    border-bottom-right-radius: 10px;
 	    font-weight: bold;
 	    cursor: pointer;
-
 	}
 	.twbs .clear_box:hover
 	{
@@ -86,12 +85,12 @@
 	}
 	.twbs .totals div.head
 	{
-		font-size: 14px;
-    	color: #ad0d0d;
+		font-size: 20px;
+    	color: #000;
 	}
 	.twbs .totals div.cnt
 	{
-		font-size: 30px;
+		font-size: 80px;
     	font-weight: bold;
     	color: #000;
 	}
